@@ -1,0 +1,54 @@
+
+# Elastic Beanstalk Files
+*/.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/stock-portal-fe/dist
+/stock-portal-fe/tmp
+/stock-portal-fe/out-tsc
+
+# dependencies
+/stock-portal-fe/node_modules
+
+# IDEs and editors
+/stock-portal-fe/.idea
+/stock_portal/.idea
+.project
+.classpath
+.c9/
+*.launch
+/stock-portal-fe/.settings/
+/stock_portal/.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+stock_portal/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+/stock-portal-fe/npm-debug.log
+/stock-portal-fe/testem.log
+/stock-portal-fe/typings
+*local.py
+*.pyc
+# e2e
+/e2e/*.js
+/e2e/*.map
+aws/
+config/
+
+# System Files
+.DS_Store
+Thumbs.db
+
