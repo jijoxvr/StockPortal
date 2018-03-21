@@ -26,7 +26,7 @@ SECRET_KEY = 'lpg2&hr)om6%%d(64l1l5i1v5fqzi=s+-r!-c1lvfma4+n$_8('
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "stock-portal.qprppt5rzm.ap-south-1.elasticbeanstalk.com",
+    "stock-dev-server.2nmwsn3iak.ap-south-1.elasticbeanstalk.com",
     "127.0.0.1"
 ]
 
@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'django_cron',
+    'authentication',
+    'subscription',
+    'nse',
+    'config'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,7 +85,16 @@ WSGI_APPLICATION = 'stock_portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-from local import *
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'stockportal',
+        'USER': 'stockuser',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -122,3 +136,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+from .crons import *

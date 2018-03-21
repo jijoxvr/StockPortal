@@ -3,6 +3,8 @@ from django.utils.datastructures import OrderedDict
 from datetime import date
 from django.db import models
 
+from config.models import Currency
+
 
 class SubscriptionCategory(OrderedDict):
     def __init__(self, *args, **kwargs):
@@ -23,13 +25,16 @@ class Plan(models.Model):
     ready_made_portfolio_access_for = models.IntegerField()
     validity = models.IntegerField()
     is_active = models.BooleanField()
+    rate = models.FloatField(default=None)
+    currency = models.ForeignKey(Currency, default=None)
 
 
 class Payment(models.Model):
     date = models.DateTimeField()
-    payment_id = models.CharField()
+    payment_id = models.CharField(max_length=50)
     profile = models.ForeignKey('authentication.Profile')
     amount = models.FloatField()
+    currency = models.ForeignKey(Currency, default=None)
 
 
 class Subscription(models.Model):
@@ -42,4 +47,4 @@ class Subscription(models.Model):
 
     @property
     def is_expired(self):
-        return self.expiry_date > date.date
+        return self.expiry_date > date.today
