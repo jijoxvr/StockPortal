@@ -1,5 +1,5 @@
 from django.db import models
-from config.models import Currency
+from app_config.models import Currency
 # Create your models here.
 
 
@@ -22,6 +22,7 @@ class StockRateManager(models.Manager):
 
 
 class StockRate(models.Model):
+    code = models.CharField(max_length=25, primary_key=True)
     stock = models.ForeignKey(Stock)
     rate = models.FloatField()
     currency = models.ForeignKey(Currency)

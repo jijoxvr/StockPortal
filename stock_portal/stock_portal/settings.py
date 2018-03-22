@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'authentication',
     'subscription',
     'nse',
-    'config'
+    'app_config'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -88,8 +88,8 @@ WSGI_APPLICATION = 'stock_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'stockportal',
-        'USER': 'stockuser',
+        'NAME': '',
+        'USER': '',
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -137,4 +137,5 @@ STATIC_ROOT = 'static'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-from .crons import *
+from .cron import *
+from .local import *

@@ -3,7 +3,7 @@ from django.utils.datastructures import OrderedDict
 from datetime import date
 from django.db import models
 
-from config.models import Currency
+from app_config.models import Currency
 
 
 class SubscriptionCategory(OrderedDict):
@@ -28,6 +28,9 @@ class Plan(models.Model):
     rate = models.FloatField(default=None)
     currency = models.ForeignKey(Currency, default=None)
 
+    def __str__(self):
+        return "{0}".format(self.name)
+
 
 class Payment(models.Model):
     date = models.DateTimeField()
@@ -35,6 +38,9 @@ class Payment(models.Model):
     profile = models.ForeignKey('authentication.Profile')
     amount = models.FloatField()
     currency = models.ForeignKey(Currency, default=None)
+
+    def __str__(self):
+        return "{0}".format(self.payment_id)
 
 
 class Subscription(models.Model):
