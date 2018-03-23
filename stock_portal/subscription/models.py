@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 from django.utils.datastructures import OrderedDict
 from datetime import date
 from django.db import models
-
 from app_config.models import Currency
 
 
