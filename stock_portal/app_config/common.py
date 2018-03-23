@@ -32,11 +32,3 @@ def get_cron_logger():
     logger.addHandler(handler)
 
     return logger
-
-
-class CommonCronJob(CronJobBase):
-
-    logger = get_cron_logger()
-
-    def __init__(self):
-        CronJobBase.__init__(self)

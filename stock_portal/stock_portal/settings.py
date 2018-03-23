@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'subscription',
     'nse',
     'app_config',
-    'djcelery'
+    'django_celery_results',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -139,7 +140,7 @@ STATIC_ROOT = 'static'
 CORS_ORIGIN_ALLOW_ALL = True
 
 CRON_LOG_FOLDER = "/home/jijo/Dev/"
-BROKER_URL = "amqp://stockuser:stockuser@localhost:5672/stockhost"
+CELERY_BROKER_URL = "amqp://stockuser:stockuser@localhost:5672/stockhost"
 
 from .cron import *
 from .local import *
@@ -148,8 +149,8 @@ from .local import *
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_TIMEZONE = TIME_ZONE
 
-CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_SEND_EVENTS = False
